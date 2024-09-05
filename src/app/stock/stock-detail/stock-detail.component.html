@@ -1,0 +1,368 @@
+<div class="content">
+    <h1 class="is-size-4"><i class="fa fa-list-alt ptk-color-text" aria-hidden="true"></i> Detalles de Stock</h1>
+    <p>Aquí encontrarás información completa de tu stock, que se actualiza automáticamente al enviar tus rotaciones.</p>
+</div>
+
+<!-- stock -->
+<div class="grid">
+    <div class="cell">
+        <div class="fixed-grid has-6-cols">
+            <div class="grid">
+                <!-- tab -->
+                <div class="cell is-col-span-6 mb-2">
+                    <div class="field has-addons">
+                        <p class="control ptk-has-addons">
+                            <button class="button ptk-is-active-btn ptk-btn-group">
+                                <span class="icon is-small">
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                </span>
+                                <span>Disponible</span>
+                            </button>
+                        </p>
+                        <p class="control ptk-has-addons">
+                            <button class="button ptk-is-desactive-btn ptk-btn-group">
+                                <span class="icon is-small">
+                                    <i class="fa fa-reply-all" aria-hidden="true"></i>
+                                </span>
+                                <span>Devoluciones</span>
+                            </button>
+                        </p>
+                    </div>
+                    <p class="has-text-grey">Utiliza estos botones para ver todos tus productos o aquellos
+                        que están pendientes para devolución.</p>
+                </div>
+                <!-- end tab -->
+
+
+                <!-- stock -->
+                <div class="cell is-col-span-6">
+                    <div class="box">
+                        <div class="fixed-grid has-6-cols">
+                            <div class="grid">
+                                <div class="cell is-col-span-2">
+                                    <p class="is-size-5"><i class="fa fa-cubes" aria-hidden="true"></i>
+                                        Stock Disponible</p>
+                                </div>
+                                <!--change view -->
+                                <div class="cell is-col-span-4">
+                                    <div class="buttons has-addons is-right ptk-has-addons">
+                                        <button class="button ptk-btn-group"
+                                            [class]="stock_tile_view ? 'ptk-is-active-btn' : 'ptk-is-desactive-btn'"
+                                            (click)="stock_tile_view=true"><i class="fa fa-th-large"
+                                                aria-hidden="true"></i></button>
+                                        <button class="button ptk-btn-group"
+                                            [class]="stock_tile_view ? 'ptk-is-desactive-btn' : 'ptk-is-active-btn'"
+                                            (click)="stock_tile_view=false"><i class="fas fa-list-alt"></i></button>
+                                    </div>
+                                    <p class="has-text-right has-text-grey">Cambia entre la vista mosaico y
+                                        tabla con estos botones.</p>
+                                </div>
+                                <!-- end change view -->
+
+                                <div class="cell is-col-span-6">
+                                    <hr class="ptk-hr" />
+                                </div>
+
+                                @if (stock_tile_view) {
+                                <!-- pegatanke product -->
+                                @for (product of products; track product) {
+                                <div class="cell">
+                                    <div class="card ptk-card animate__animated animate__flipInY">
+                                        <div class="card-image">
+                                            <figure class="image is-flex-grow-4">
+                                                <img [src]="getProductInformation(product.product).img"
+                                                    alt="Pegatanke Epoxi Black" />
+                                            </figure>
+                                        </div>
+                                        <footer class="card-footer ptk-color has-text-white">
+                                            <a href="#" class="card-footer-item has-text-white">
+                                                <p class="is-size-5"><i class="fa fa-cube" aria-hidden="true"></i> {{
+                                                    product.quantity }}</p>
+                                            </a>
+                                        </footer>
+                                    </div>
+                                </div>
+                                }
+                                <!-- end pegatanke -->
+                                } @else {
+                                <!-- table -->
+                                <div class="cell is-col-span-6">
+                                    <table
+                                        class="table is-fullwidth is-hoverable is-striped is-bordered animate__animated animate__flipInX">
+                                        <thead class="ptk-color">
+                                            <tr>
+                                                <th class="has-text-white"><i class="fa fa-cube" aria-hidden="true"></i>
+                                                    Producto</th>
+                                                <th class="has-text-white has-text-centered"><i class="fa fa-cubes"
+                                                        aria-hidden="true"></i> Cantidad
+                                                    en cajas</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @for (product of products; track product) {
+                                            <tr>
+                                                <td><strong>{{ getProductInformation(product.product).name }}</strong></td>
+                                                <td class="has-text-centered">{{ product.quantity }}</td>
+                                            </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- end table -->
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end stock -->
+
+                <!-- returns -->
+                @if(false) {
+                <div class="cell is-col-span-6">
+                    <div class="box">
+                        <div class="fixed-grid has-6-cols">
+                            <div class="grid">
+                                <div class="cell is-col-span-2">
+                                    <p class="is-size-5"><i class="fa fa-cubes" aria-hidden="true"></i>
+                                        Stock Disponible</p>
+                                </div>
+                                <!--change view -->
+                                <div class="cell is-col-span-4">
+                                    <div class="buttons has-addons is-right ptk-has-addons">
+                                        <button class="button ptk-is-active-btn ptk-btn-group"><i class="fa fa-th-large"
+                                                aria-hidden="true"></i></button>
+                                        <button class="button ptk-is-desactive-btn ptk-btn-group"><i class="fa fa-table"
+                                                aria-hidden="true"></i></button>
+                                    </div>
+                                    <p class="has-text-right has-text-grey">Cambia entre la vista en
+                                        cuadrícula y tabla con estos botones.</p>
+                                </div>
+                                <!-- end change view -->
+
+                                <div class="cell is-col-span-6">
+                                    <hr class="ptk-hr" />
+                                </div>
+
+                                <!-- pegatanke epoxi black -->
+                                <div class="cell">
+                                    <div class="card ptk-card">
+                                        <div class="card-image">
+                                            <figure class="image is-flex-grow-4">
+                                                <img src="img/products/pegatanke_epoxi_black.png"
+                                                    alt="Pegatanke Epoxi Black" />
+                                            </figure>
+                                        </div>
+                                        <footer class="card-footer ptk-color has-text-white">
+                                            <a href="#" class="card-footer-item has-text-white">
+                                                <p class="is-size-5"><i class="fa fa-cube" aria-hidden="true"></i> 10
+                                                </p>
+                                            </a>
+                                        </footer>
+                                    </div>
+                                </div>
+                                <!-- end pegatanke epoxi black -->
+
+                                <!-- pegatanke epoxi white -->
+                                <div class="cell">
+                                    <div class="card ptk-card">
+                                        <div class="card-image">
+                                            <figure class="image is-flex-grow-4">
+                                                <img src="img/products/pegatanke_epoxi_white.png"
+                                                    alt="Pegatanke Epoxi Black" />
+                                            </figure>
+                                        </div>
+                                        <footer class="card-footer ptk-color has-text-white">
+                                            <a href="#" class="card-footer-item has-text-white">
+                                                <p class="is-size-5"><i class="fa fa-cube" aria-hidden="true"></i> 10
+                                                </p>
+                                            </a>
+                                        </footer>
+                                    </div>
+                                </div>
+                                <!-- end pegatanke epoxi white -->
+
+                                <!-- pegatanke epoxi steel -->
+                                <div class="cell">
+                                    <div class="card ptk-card">
+                                        <div class="card-image">
+                                            <figure class="image is-flex-grow-4">
+                                                <img src="img/products/pegatanke_epoxi_steel.png"
+                                                    alt="Pegatanke Epoxi Black" />
+                                            </figure>
+                                        </div>
+                                        <footer class="card-footer ptk-color has-text-white">
+                                            <a href="#" class="card-footer-item has-text-white">
+                                                <p class="is-size-5"><i class="fa fa-cube" aria-hidden="true"></i> 10
+                                                </p>
+                                            </a>
+                                        </footer>
+                                    </div>
+                                </div>
+                                <!-- end pegatanke epoxi steel -->
+
+                                <!-- pegatanke epoxi transparent -->
+                                <div class="cell">
+                                    <div class="card ptk-card">
+                                        <div class="card-image">
+                                            <figure class="image is-flex-grow-4">
+                                                <img src="img/products/pegatanke_epoxi_transparent.png"
+                                                    alt="Pegatanke Epoxi Black" />
+                                            </figure>
+                                        </div>
+                                        <footer class="card-footer ptk-color has-text-white">
+                                            <a href="#" class="card-footer-item has-text-white">
+                                                <p class="is-size-5"><i class="fa fa-cube" aria-hidden="true"></i> 10
+                                                </p>
+                                            </a>
+                                        </footer>
+                                    </div>
+                                </div>
+                                <!-- end pegatanke epoxi transparent -->
+
+                                <!-- pegatanke pvc/cpvc 118-->
+                                <div class="cell">
+                                    <div class="card ptk-card">
+                                        <div class="card-image">
+                                            <figure class="image is-flex-grow-4">
+                                                <img src="img/products/petakanke_pvccpvc_118ml.png"
+                                                    alt="Pegatanke PVC/CPVC 118ml" />
+                                            </figure>
+                                        </div>
+                                        <footer class="card-footer ptk-color has-text-white">
+                                            <a href="#" class="card-footer-item has-text-white">
+                                                <p class="is-size-5"><i class="fa fa-cube" aria-hidden="true"></i> 10
+                                                </p>
+                                            </a>
+                                        </footer>
+                                    </div>
+                                </div>
+                                <!-- end pegatanke pvc/cpvc 118-->
+
+                                <!-- pegatanke pvc/cpvc 240 -->
+                                <div class="cell">
+                                    <div class="card ptk-card">
+                                        <div class="card-image">
+                                            <figure class="image is-flex-grow-4">
+                                                <img src="img/products/petakanke_pvccpvc_240ml.png"
+                                                    alt="Pegatanke Epoxi Black" />
+                                            </figure>
+                                        </div>
+                                        <footer class="card-footer ptk-color has-text-white">
+                                            <a href="#" class="card-footer-item has-text-white">
+                                                <p class="is-size-5"><i class="fa fa-cube" aria-hidden="true"></i> 10
+                                                </p>
+                                            </a>
+                                        </footer>
+                                    </div>
+                                </div>
+                                <!-- end pegatanke pvc/cpvc 240 -->
+
+                                <!-- pegatanke pvc/cpvc 475 -->
+                                <div class="cell">
+                                    <div class="card ptk-card">
+                                        <div class="card-image">
+                                            <figure class="image is-flex-grow-4">
+                                                <img src="img/products/petakanke_pvccpvc_475ml.png"
+                                                    alt="Pegatanke Epoxi Black" />
+                                            </figure>
+                                        </div>
+                                        <footer class="card-footer ptk-color has-text-white">
+                                            <a href="#" class="card-footer-item has-text-white">
+                                                <p class="is-size-5"><i class="fa fa-cube" aria-hidden="true"></i> 10
+                                                </p>
+                                            </a>
+                                        </footer>
+                                    </div>
+                                </div>
+                                <!-- end pegatanke pvc/cpvc 475 -->
+
+                                <!-- pegatanke teipe -->
+                                <div class="cell">
+                                    <div class="card ptk-card">
+                                        <div class="card-image">
+                                            <figure class="image is-flex-grow-4">
+                                                <img src="img/products/pegatanke_teipe.png" alt="Pegatanke Teipe" />
+                                            </figure>
+                                        </div>
+                                        <footer class="card-footer ptk-color has-text-white">
+                                            <a href="#" class="card-footer-item has-text-white">
+                                                <p class="is-size-5"><i class="fa fa-cube" aria-hidden="true"></i> 10
+                                                </p>
+                                            </a>
+                                        </footer>
+                                    </div>
+                                </div>
+                                <!-- end pegatanke teipe -->
+
+                                <!-- pegatanke sellamotor-->
+                                <div class="cell">
+                                    <div class="card ptk-card">
+                                        <div class="card-image">
+                                            <figure class="image is-flex-grow-4">
+                                                <img src="img/products/pegatanke_sellamotor.png"
+                                                    alt="Pegatanke sellamotor" />
+                                            </figure>
+                                        </div>
+                                        <footer class="card-footer ptk-color has-text-white">
+                                            <a href="#" class="card-footer-item has-text-white">
+                                                <p class="is-size-5"><i class="fa fa-cube" aria-hidden="true"></i> 10
+                                                </p>
+                                            </a>
+                                        </footer>
+                                    </div>
+                                </div>
+                                <!-- end pegatanke sellamotor -->
+
+                                <!-- pegatanke epoxi masilla-->
+                                <div class="cell">
+                                    <div class="card ptk-card">
+                                        <div class="card-image">
+                                            <figure class="image is-flex-grow-4">
+                                                <img src="img/products/pegatanke_masilla.png"
+                                                    alt="Pegatanke Epoxi Black" />
+                                            </figure>
+                                        </div>
+                                        <footer class="card-footer ptk-color has-text-white">
+                                            <a href="#" class="card-footer-item has-text-white">
+                                                <p class="is-size-5"><i class="fa fa-cube" aria-hidden="true"></i> 10
+                                                </p>
+                                            </a>
+                                        </footer>
+                                    </div>
+                                </div>
+                                <!-- end pegatanke epoxi masilla -->
+
+                                <!-- pegatanke epoxi toke -->
+                                <div class="cell">
+                                    <div class="card ptk-card">
+                                        <div class="card-image">
+                                            <figure class="image is-flex-grow-4">
+                                                <img src="img/products/pegatanke_toke.png" alt="Pegatanke Toke" />
+                                            </figure>
+                                        </div>
+                                        <footer class="card-footer ptk-color has-text-white">
+                                            <a href="#" class="card-footer-item has-text-white">
+                                                <p class="is-size-5"><i class="fa fa-cube" aria-hidden="true"></i> 10
+                                                </p>
+                                            </a>
+                                        </footer>
+                                    </div>
+                                </div>
+                                <!-- end pegatanke toke -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end returns -->
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<!-- stock -->
+
+<!-- returns -->
+<div class="grid">
+    <div class="cell"></div>
+</div>
+<!-- end returns -->

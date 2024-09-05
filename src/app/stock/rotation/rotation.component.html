@@ -1,0 +1,75 @@
+<div class="content">
+    <h1 class="is-size-4"><i class="fa fa-list-alt ptk-color-text" aria-hidden="true"></i> Rotación</h1>
+    <p>Consulta tu historial de rotaciones y verifica si tienes alguna pendiente.</p>
+
+    @if(rotation_pending) {
+    <div class="box ptk-background-danger">
+        <p class="has-text-white is-size-5"><i class="fas fa-exclamation-triangle has-text-white"></i> ¡Tines una
+            rotacion pendiente por enviar!</p>
+        <p class="has-text-white">Tu colaboración es fundamental para el éxito de nuestro equipo. Por favor, envía tu
+            rotación a la brevedad posible.</p>
+        <button class="button ptk-color has-text-white" routerLink="send">
+            <span class="icon is-small">
+                <i class="fas fa-paper-plane fa-beat"></i>
+            </span>
+            <span>Enviar rotación</span>
+        </button>
+    </div>
+    }
+</div>
+
+<!-- List of rotation -->
+<div class="grid">
+    <div class="cell">
+        <div class="fixed-grid has-6-cols">
+            <div class="grid">
+                <div class="cell is-col-span-6">
+                    <div class="box">
+                        <table
+                            class="table is-fullwidth is-hoverable is-striped is-bordered animate__animated animate__flipInX">
+                            <thead class="ptk-color">
+                                <tr class="has-background-black-bis has-text-white">
+                                    <th class="has-text-white is-size-5" colspan="3">
+                                        <i class="fas fa-table"></i> Tabla de rotaciones
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th class="has-text-white"><i class="fas fa-sort-numeric-down"></i> Numero</th>
+                                    <th class="has-text-white has-text-centered"><i class="fas fa-calendar-check"></i>
+                                        Fecha</th>
+                                    <th class="has-text-white has-text-centered"><i class="fas fa-check-square"></i>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @for (rotation of rotation_list; track rotation; let index = $index) {
+                                <tr>
+                                    <td class="has-text-centered">{{ index+1 }}</td>
+                                    <td class="has-text-centered">{{ rotation.date }}</td>
+                                    <td class="has-text-centered">
+                                        <button class="button is-small ptk-color has-text-white" [routerLink]="['/stock/rotation/detail', rotation.id]">
+                                            <span class="icon is-small">
+                                                <i class="fas fa-eye"></i>
+                                            </span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                }
+
+                                @if(rotation_list?.length === 0) {
+                                <tr class="animate__animated animate__bounceInLeft">
+                                    <td colspan="3" class="has-text-centered is-size-5"><i
+                                            class="fas fa-exclamation-circle"></i> No tienes rotaciones por el momento
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end List of rotation -->

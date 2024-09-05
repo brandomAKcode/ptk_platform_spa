@@ -1,0 +1,59 @@
+<div class="content">
+    <h1 class="is-size-4"><i class="fas fa-digital-tachograph ptk-color-text"></i> Detalles de rotación</h1>
+    <p>Aqui encontraras informacion detallada de la rotación seleccionada.</p>
+
+    @if(rotation_pending) {
+    <div class="box ptk-background-danger">
+        <p class="has-text-white is-size-5"><i class="fas fa-exclamation-triangle has-text-white"></i> ¡Tines una
+            rotacion pendiente por enviar!</p>
+        <p class="has-text-white">Tu colaboración es fundamental para el éxito de nuestro equipo. Por favor, envía tu
+            rotación a la brevedad posible.</p>
+        <button class="button ptk-color has-text-white" routerLink="send">
+            <span class="icon is-small">
+                <i class="fas fa-paper-plane fa-beat"></i>
+            </span>
+            <span>Enviar rotación</span>
+        </button>
+    </div>
+    }
+</div>
+
+<!-- List of rotation -->
+<div class="grid">
+    <div class="cell">
+        <div class="fixed-grid has-6-cols">
+            <div class="grid">
+                <div class="cell is-col-span-6">
+                    <div class="box">
+                        <table
+                            class="table is-fullwidth is-hoverable is-striped is-bordered animate__animated animate__flipInX">
+                            <thead class="ptk-color">
+                                <tr class="has-background-black-bis has-text-white">
+                                    <th class="has-text-white is-size-5" colspan="3">
+                                        <i class="fas fa-exchange-alt"></i> Rotacion 
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th class="has-text-white has-text-centered"><i class="fas fa-bars"></i>
+                                        Producto</th>
+                                    <th class="has-text-white has-text-centered"><i class="fas fa-cubes"></i>
+                                        Cantidad(Cajas)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                @for (rotation of rotation_products; track rotation; let index = $index) {
+                                <tr>
+                                    <td class="has-text-centered"><strong>{{ product_lits[rotation.product].name }}</strong></td>
+                                    <td class="has-text-centered">{{ rotation.quantity }}</td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end List of rotation -->

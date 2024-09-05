@@ -1,0 +1,141 @@
+/* You can add global styles to this file, and also import other style files */
+
+/*bulma edit */
+.navbar {
+    --bulma-navbar-height: 4.25rem;
+}
+
+.navbar-item img {
+    --bulma-navbar-item-img-max-height: 2.75rem;
+}
+
+input.input:focus {
+    box-shadow: 0 0 4px 0 rgb(69, 153, 21) inset;
+    outline: 1px solid rgb(69, 153, 21);
+    border: none;
+}
+
+.control,
+.input,
+.select,
+.textarea,
+.icon {
+    --bulma-input-icon-focus-color: rgb(69, 153, 21);
+}
+
+.menu-list .menu-item.is-active,
+.menu-list .menu-item.is-selected,
+.menu-list a.is-active,
+.menu-list a.is-selected,
+.menu-list button.is-active,
+.menu-list button.is-selected {
+    background-color: rgb(230, 230, 230) !important;
+}
+
+.content ul {
+    margin-inline-start: 0 !important;
+}
+
+.tabs ul {
+    border-color: rgb(69, 153, 21) !important;
+}
+
+.is-active-ptk-tab {
+    background-color: rgb(69, 153, 21) !important;
+    color: white;
+    border-color: rgb(69, 153, 21) !important;
+}
+
+.box {
+    --bulma-box-shadow: 0em 0.1em 0.3em #0000007a !important;
+}
+
+.table {
+    --bulma-table-striped-row-even-background-color: rgb(240, 240, 240) !important;
+}
+
+.ptk-button {
+    border-color: rgb(69, 153, 21) !important;
+}
+
+.menu {
+    height: 100vh !important;
+    overflow-y: auto !important;
+}
+
+.modal {
+    margin-top: -8em !important;
+}
+
+/*bulma edit */
+
+/* ptk */
+.ptk-background-grey {
+    background-color: rgb(216, 216, 216) !important;
+}
+
+.ptk-background-info {
+    background-color: rgb(30, 95, 236) !important;
+}
+
+.ptk-background-danger {
+    background-color: rgb(235, 71, 79) !important;
+}
+
+.ptk-text-danger {
+    color: rgb(235, 71, 79) !important;
+}
+
+.ptk-background-warning {
+    background-color: rgb(243, 141, 25) !important;
+}
+
+.ptk-background-white {
+    background-color: white;
+}
+
+.ptk-color {
+    background-color: rgb(69, 153, 21) !important;
+}
+
+.ptk-color-text {
+    color: rgb(69, 153, 21);
+}
+
+.bg-opacity {
+    background-color: rgba(0, 0, 0, 0.795);
+}
+
+.ptk-is-active-btn {
+    background-color: rgb(69, 153, 21) !important;
+    color: white !important;
+}
+
+.ptk-is-desactive-btn {
+    background-color: rgb(46, 46, 46) !important;
+    color: white !important;
+}
+
+.ptk-btn-group {
+    border-style: none !important;
+}
+
+.ptk-has-addons {
+    margin-bottom: 5px !important;
+}
+
+.ptk-card {
+    --bulma-card-shadow: 0em 0.1em 0.3em #0000007a !important;
+}
+
+.ptk-hr {
+    background-color: hsl(0, 0%, 91%) !important;
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
+}
+
+.ptk-is-horizontal-center {
+    justify-content: center;
+}
+
+/* ptk */

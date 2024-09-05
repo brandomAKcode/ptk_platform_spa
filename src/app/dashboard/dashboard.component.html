@@ -1,0 +1,135 @@
+<div class="grid pt-2 pr-2">
+    <div class="cell is-col-span-4">
+        <div class="box">
+            <p class="is-size-4 mb-2"><i class="fa fa-th-large ptk-color-text" aria-hidden="true"></i> Dashboard</p>
+            <p>
+                ¡Hola {{ user?.user_name }}! En este apartado, te presentamos un resumen detallado de tus datos de stock
+                y crédito. Revisa tus datos a continuación para asegurarte de que estén actualizados y completos.
+            </p>
+        </div>
+    </div>
+    <div class="cell is-col-span-2">
+        <div class="card">
+            <header class="card-header has-background-black">
+                <p class="card-header-title has-text-white"><i class="fa fa-cubes" aria-hidden="true"></i>&nbsp;Stock
+                </p>
+            </header>
+            <div class="card-content">
+                <div class="grid">
+                    <div class="cell">
+                        <p class="has-text-grey"><i class="fa fa-info-circle" aria-hidden="true"></i> Resumen de tu Stock, cajas disponibles y devoluciones.</p>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="cell">
+                        <div class="card animate__animated animate__flipInY">
+                            <header class="card-header ptk-color">
+                                <p class="card-header-title has-text-white"><i class="fa fa-circle"
+                                        aria-hidden="true"></i>&nbsp;Cajas en Stock</p>
+                            </header>
+                            <div class="card-content ptk-color has-text-white">
+                                <p class="is-size-4 has-text-centered">
+                                    <i class="fa fa-cube" aria-hidden="true"></i> {{ count_products_in_stock }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cell">
+                        <div class="card animate__animated animate__flipInY">
+                            <header class="card-header ptk-background-info">
+                                <p class="card-header-title has-text-white"><i class="fa fa-circle"
+                                        aria-hidden="true"></i>&nbsp;Devoluciones</p>
+                            </header>
+                            <div class="card-content ptk-background-info has-text-white">
+                                <p class="is-size-4 has-text-centered">
+                                    <i class="fa fa-reply-all" aria-hidden="true"></i> 0
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid has-text-centered">
+                    <div class="cell">
+                        <button class="button is-small is-fullwidth">Ver mas detalles</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- credit info -->
+    <div class="cell is-col-span-2">
+        <div class="card">
+            <header class="card-header has-background-black">
+                <p class="card-header-title has-text-white"><i class="fa fa-money" aria-hidden="true"></i>&nbsp;Credito
+                </p>
+            </header>
+            <div class="card-content">
+                <div class="grid">
+                    <div class="cell">
+                        <p class="has-text-grey"><i class="fa fa-info-circle" aria-hidden="true"></i> Resumen de tu credito, deuda y estado.</p>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="cell">
+                        <div class="card animate__animated animate__flipInY">
+                            <header class="card-header ptk-background-danger">
+                                <p class="card-header-title has-text-white"><i class="fa fa-circle"
+                                        aria-hidden="true"></i>&nbsp;Deuda</p>
+                            </header>
+                            <div class="card-content ptk-background-danger has-text-white">
+                                <p class="is-size-4 has-text-centered">
+                                    <i class="fa fa-usd" aria-hidden="true"></i> 0
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cell">
+                        <div class="card animate__animated animate__flipInY">
+                            <header class="card-header ptk-background-warning">
+                                <p class="card-header-title has-text-white"><i class="fa fa-circle"
+                                        aria-hidden="true"></i>&nbsp;Estado</p>
+                            </header>
+                            <div class="card-content ptk-background-warning has-text-white">
+                                <p class="is-size-4 has-text-centered">
+                                    <i class="fa fa-check-circle-o" aria-hidden="true"></i> Activo
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid has-text-centered">
+                    <div class="cell">
+                        <button class="button is-small is-fullwidth">Ver mas detalles</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- dev -->
+    <div class="cell is-col-span-2">
+        <div class="card">
+            <header class="card-header has-background-black">
+                <p class="card-header-title has-text-white"><i class="fa fa-code" aria-hidden="true"></i>&nbsp; Modulo
+                    en desarrollo</p>
+            </header>
+            <div class="card-content has-text-centered">
+                <img src="img/desarrollo-web.png" alt="Sitio en desarrollo" width="70%">
+            </div>
+        </div>
+    </div>
+    <div class="cell is-col-span-2">
+        <div class="card">
+            <header class="card-header has-background-black">
+                <p class="card-header-title has-text-white"><i class="fa fa-code" aria-hidden="true"></i>&nbsp; Modulo
+                    en desarrollo</p>
+            </header>
+            <div class="card-content has-text-centered">
+                <img src="img/desarrollo-web.png" alt="Sitio en desarrollo" width="70%">
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+</div>

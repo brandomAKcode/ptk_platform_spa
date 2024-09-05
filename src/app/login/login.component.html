@@ -1,0 +1,84 @@
+<main>
+    <div class="bg-opacity">
+        <br />
+        <div class="fixed-grid has-5-cols pr-2 pl-2" style="opacity: 1;">
+            <div class="grid">
+                <div class="cell is-row-span-2 is-col-span-3 is-align-content-center">
+                    <img src="img/ptk_logo_2.png" alt="PTK Platform logo" width="70%">
+                </div>
+                <div class="cell is-col-span-2">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="content">
+                                <h2><i class="fa fa-sign-in ptk-color-text" aria-hidden="true"></i> Ingresar</h2>
+                                <small class="has-text-grey-light">Ingresa a la plataforma con los datos suministrados
+                                    por
+                                    el equipo de sistemas PTK.</small>
+                                <!-- form login -->
+                                <form [formGroup]="userLoginForm" (ngSubmit)="onSubmit()">
+                                    <div class="field">
+                                        <p class="control has-icons-left has-icons-right">
+                                            <input class="input" type="email" placeholder="Email"
+                                                formControlName="email">
+                                            <span class="icon is-small is-left">
+                                                <i class="fa fa-envelope"></i>
+                                            </span>
+                                            <span class="icon is-small is-right">
+                                                <i class="fa fa-check"></i>
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div class="field">
+                                        <p class="control has-icons-left">
+                                            <input class="input" type="password" placeholder="Contraseña"
+                                                formControlName="password">
+                                            <span class="icon is-small is-left">
+                                                <i class="fa fa-lock"></i>
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div class="field" [ngClass]="checkingCredentials ? '' : 'is-hidden'">
+                                        <p class="control ptk-color-text">
+                                            <i class="fa fa-circle-o-notch ptk-color-text fa-spin" aria-hidden="true"></i> Comprobando credenciales
+                                        </p>
+                                    </div>
+                                    <div class="field">
+                                        <p class="control">
+                                            <button class="button ptk-color is-border-thin has-text-white" type="button"
+                                                (click)="clickLogin()" clickable [disabled]="checkingCredentials ? true : false">
+                                                Entrar
+                                            </button>
+                                        </p>
+                                    </div>
+                                </form>
+                                <!-- end form login -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- help -->
+                <div class="cell is-col-start-4 is-col-span-2">
+                    <div class="card ptk-color">
+                        <div class="card-content">
+                            <div class="content">
+                                <h2 class="has-text-white"><i class="fa fa-life-ring" aria-hidden="true"></i> Ayuda</h2>
+                                <p class="has-text-white">
+                                    ¿Tienes problemas para ingresar a la plataforma? <br />
+                                    Haz click en el siguiente boton para obtener asistencia del equipo de sistemas PTK.
+                                </p>
+                                <button class="button is-black">
+                                    <span class="icon">
+                                        <i class="fa fa-lg fa-whatsapp" aria-hidden="true"></i>
+                                    </span>
+                                    <span>Sistemas PTK</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end help -->
+            </div>
+        </div>
+        <br />
+    </div>
+</main>

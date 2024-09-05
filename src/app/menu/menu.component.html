@@ -1,0 +1,47 @@
+<aside class="menu pl-2 pr-2 pt-1">
+    <p class="menu-label">Usuario</p>
+    <ul class="menu-list">
+        <li><a><i class="fa fa-user-circle ptk-color-text" [class]="user_role === 'ADM' ? 'fa-user-shield' : 'fa-user-circle'" aria-hidden="true"></i> {{ user?.user_name }}</a></li>
+        <li><a (click)="logout()"><i class="fas fa-sign-out-alt ptk-text-danger"></i> Salir</a></li>
+    </ul>
+    <p class="menu-label">Administration</p>
+    @if (user_role === 'ADM') {
+        <ul class="menu-list">
+            <li>
+                <a routerLink="/admin/dashboard" routerLinkActive="ptk-color has-text-white"><i class="fas fa-chart-bar"></i> Dashboard</a>
+                <a routerLink="/dealer/list" routerLinkActive="ptk-color has-text-white"><i class="fas fa-users"></i> Distribuidores</a>
+                <!--  
+                <a><i class="fa fa-cubes" aria-hidden="true"></i> Stock</a>
+                <ul>
+                    <li><a routerLink="/stock/detail" routerLinkActive="ptk-color has-text-white"><i class="fa fa-list-alt"
+                                aria-hidden="true"></i> Ver en detalle</a></li>
+                    <li>
+    
+                        <a routerLink="/stock/rotation" routerLinkActive="ptk-color has-text-white"
+                            [class]="rotation_pending ? 'ptk-text-danger' : ''"><i class="fas fa-exchange-alt"
+                                [class]="rotation_pending ? 'fa-fade ptk-text-danger' : ''"></i> Rotacion</a>
+                    </li>
+                </ul>
+                -->
+            </li>
+        </ul>
+    } @else {
+        <ul class="menu-list">
+            <li>
+                <a routerLink="/dashboard" routerLinkActive="ptk-color has-text-white"><i class="fa fa-th-large"
+                        aria-hidden="true"></i> Dashboard</a>
+                <a><i class="fa fa-cubes" aria-hidden="true"></i> Stock</a>
+                <ul>
+                    <li><a routerLink="/stock/detail" routerLinkActive="ptk-color has-text-white"><i class="fa fa-list-alt"
+                                aria-hidden="true"></i> Ver en detalle</a></li>
+                    <li>
+    
+                        <a routerLink="/stock/rotation" routerLinkActive="ptk-color has-text-white"
+                            [class]="rotation_pending ? 'ptk-text-danger' : ''"><i class="fas fa-exchange-alt"
+                                [class]="rotation_pending ? 'fa-fade ptk-text-danger' : ''"></i> Rotacion</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    }
+</aside>

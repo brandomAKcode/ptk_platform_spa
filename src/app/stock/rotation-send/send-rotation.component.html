@@ -1,0 +1,185 @@
+<div class="content">
+    <h1 class="is-size-4"><i class="fas fa-paper-plane ptk-color-text" aria-hidden="true"></i> Enviar Rotación</h1>
+    <p>A continuacion podras crear y enviar tu rotacion de productos.</p>
+</div>
+
+<div class="modal" [class]="success_modal ? 'is-active' : ''">
+    <div class="modal-background"></div>
+    <div class="modal-card animate__animated animate__bounceIn">
+        <header class="modal-card-head ptk-color has-text-white">
+            <p class="modal-card-title has-text-white"><i class="fas fa-check"></i></p>
+        </header>
+        <section class="modal-card-body has-text-centered">
+            <div class="content">
+                <p class="is-size-4"><i class="fas fa-check-circle ptk-color-text"></i> ¡Excelente Rotación carga con exito!</p>
+            </div>
+        </section>
+        <footer class="modal-card-foot">
+            <div class="buttons">
+                <button class="button is-success ptk-color has-text-white"
+                    (click)="ok()"><i class="fas fa-check"></i> Aceptar</button>
+            </div>
+        </footer>
+    </div>
+</div>
+
+<div class="modal" [class]="open_modal ? 'is-active' : ''">
+    <div class="modal-background"></div>
+    <div class="modal-card animate__animated animate__bounceIn">
+        <header class="modal-card-head ptk-color has-text-white">
+            <p class="modal-card-title has-text-white"><i class="fas fa-plus-square"></i> Agregar producto</p>
+            <button class="delete" aria-label="close" (click)="closeModal()"></button>
+        </header>
+        <section class="modal-card-body">
+            <div class="grid">
+                <div class="fixed-grid has-3-cols">
+                    <div class="grid">
+                        <div class="cell has-text-centered is-col-span-3">
+                            <!-- Image of product -->
+                            @if (show_image) {
+                            <img class="has-text-centered animate__animated animate__bounceInDown" width="30%"
+                                [src]="product_img" />
+                            } @else {
+                            <img class="has-text-centered animate__animated animate__bounceInDown" width="30%"
+                                [src]="product_img" />
+                            }
+                        </div>
+                        <div class="cell is-col-span-3">
+
+                            <div class="field has-addons has-addons-centered">
+                                <p class="control">
+                                    <a class="button is-static">
+                                        Producto*
+                                    </a>
+                                </p>
+                                <p class="control">
+                                    <span class="select">
+                                        <select [(ngModel)]="product_select" (change)="selectProduct($event)">
+                                            <option value="default">Selecciona</option>
+                                            @for (product of ptk_product_list; track product) {
+                                            <option value="{{ product?.id }}">{{ product?.name }}</option>
+                                            }
+                                        </select>
+                                    </span>
+                                </p>
+                                <p class="control">
+                                    <a class="button is-static">
+                                        Cantidad*
+                                    </a>
+                                </p>
+                                <p class="control">
+                                    <input [(ngModel)]="product_quantity" class="input" type="number"
+                                        placeholder="Cantidad de cajas" min="1" value="1">
+                                </p>
+                            </div>
+                            <p class="has-text-grey"><i class="fas fa-info-circle"></i> Usa este selector para
+                                seleccionar el producto.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="modal-card-foot">
+            <div class="buttons">
+                <button class="button is-success ptk-color has-text-white" [disabled]="!is_submit"
+                    (click)="addProductToRotation()"><i class="fas fa-check"></i> Aceptar</button>
+                <button class="button ptk-background-danger has-text-white" (click)="closeModal()"><i
+                        class="fas fa-times"></i>
+                    Cancelar</button>
+            </div>
+        </footer>
+    </div>
+</div>
+<!-- rotation -->
+<div class="grid">
+    <div class="cell">
+        <div class="fixed-grid has-6-cols">
+            <div class="grid">
+                <div class="cell is-col-span-6">
+                    <div class="box">
+                        <div class="grid">
+                            <div class="cell">
+                                <button class="button ptk-color has-text-white" routerLink="send" (click)="openModal()">
+                                    <span class="icon is-small">
+                                        <i class="fas fa-plus-square"></i>
+                                    </span>
+                                    <span>Agregar producto</span>
+                                </button>
+                                <p class="has-text-grey">
+                                    Agrega productos a la tabla de rotación con este boton.
+                                </p>
+                            </div>
+                            <div class="cell has-text-right">
+                                <p class="is-right"><i class="fas fa-calendar-alt"></i> &nbsp;<strong>Fecha de rotacion:
+                                    </strong>{{ rotation_information?.date }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <br />
+                        <table
+                            class="table is-fullwidth is-hoverable is-striped is-bordered animate__animated animate__flipInX">
+                            <thead class="ptk-color">
+                                <tr class="has-background-black-bis has-text-white">
+                                    <th class="has-text-white is-size-5" colspan="3">
+                                        <i class="fas fa-table"></i> Tabla de rotación
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th class="has-text-white has-text-centered"><i class="fas fa-bars"></i>
+                                        Producto</th>
+                                    <th class="has-text-white has-text-centered"><i class="fas fa-cubes"></i>
+                                        Cantidad(Cajas)</th>
+                                    <th class="has-text-white has-text-centered"><i class="fas fa-edit"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if(rotation_products.length === 0) {
+                                <tr class="animate__animated animate__bounceInLeft">
+                                    <td colspan="3" class="has-text-centered is-size-5"><i
+                                            class="fas fa-exclamation-circle"></i> Tabla de Rotación vacia.</td>
+                                </tr>
+                                }
+                                @for (product of rotation_products; track product; let index = $index ){
+                                <tr class="animate__animated animate__bounceInLeft">
+                                    <td><strong>{{ product.name }}</strong></td>
+                                    <td class="has-text-centered">{{ product.quantity }}</td>
+                                    <td class="has-text-centered">
+                                        <button class="button is-small ptk-background-danger has-text-white"
+                                            routerLink="send" (click)="deleteProductToRoration(index)">
+                                            <span class="icon is-small">
+                                                <i class="far fa-times-circle"></i>
+                                            </span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                            @if(rotation_products.length >= 1) {
+                            <tfoot class="animate__animated animate__bounceInLeft">
+                                <tr class="has-text-centered">
+                                    <td colspan="3">
+                                        <button class="button ptk-color has-text-white" (click)="sendRotation()">
+                                            <span class="icon">
+                                                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                                            </span>
+                                            <span>Enviar rotación</span>
+                                        </button>
+                                        <button class="button ptk-background-danger has-text-white" (click)="deleAllProductsToRotation()">
+                                            <span class="icon">
+                                                <i class="fas fa-trash"></i>
+                                            </span>
+                                            <span>Vaciar tabla</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- rotation -->

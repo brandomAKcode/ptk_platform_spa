@@ -1,0 +1,46 @@
+<!-- navbar  -->
+<nav class="navbar is-black is-expanded">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="https://bulma.io">
+            <img src="img/ptk_logo_navbar.png" alt="PTK Platform logo">
+
+        </a>
+        <div class="navbar-burger js-burger" data-target="navMenuColorblack-example">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div id="navMenuColorblack-example" class="navbar-menu">
+        <div class="navbar-start">
+
+        </div>
+
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="field is-grouped">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- end navbar  -->
+@if (isLogged) {
+<main>
+    <div class="fixed-grid has-5-cols">
+        <div class="grid ptk-background-grey">
+            <div class="cell is-col-span-1 ptk-background-white">
+                <app-menu [user]="user"></app-menu>
+            </div>
+            <div class="cell is-col-span-4">
+                <router-outlet style="display: none;" />
+            </div>
+        </div>
+    </div>
+</main>
+} @else {
+<app-login (activateNavbar)="activateNavbar()"></app-login>
+}
